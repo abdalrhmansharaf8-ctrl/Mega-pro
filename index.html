@@ -8,9 +8,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
 
-    <!-- Fonts & Icons (تم إصلاح الروابط لتظهر الأيقونات والخطوط) -->
-    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://googleapis.com" rel="stylesheet">
     
     <!-- AOS Library for Scroll Animations -->
     <link href="https://unpkg.com" rel="stylesheet">
@@ -39,7 +39,7 @@
 
         /* Navigation */
         nav {
-            padding: 15px 8%;
+            padding: 15px 5%; /* تقليل الـ padding عشان الموبايل */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -59,12 +59,12 @@
         }
 
         .logo-box img {
-            height: 45px;
+            height: 35px; /* تصغير اللوجو شوية للموبايل */
             width: auto;
         }
 
         .logo-text {
-            font-size: 1.6rem;
+            font-size: 1.3rem; /* تصغير النص شوية */
             font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
@@ -76,10 +76,10 @@
         .nav-links a {
             color: #fff;
             text-decoration: none;
-            margin-left: 25px;
+            margin-left: 20px;
             font-weight: 500;
             transition: 0.3s;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .nav-links a:hover {
@@ -88,20 +88,20 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 10%;
+            padding: 100px 5% 50px; /* تعديل المسافات */
             background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 25px;
+            font-size: clamp(2rem, 8vw, 4.5rem); /* تعديل الحجم ليكون مرن أكتر */
+            line-height: 1.2;
+            margin-bottom: 20px;
         }
 
         .hero span {
@@ -113,13 +113,13 @@
         .hero p {
             color: var(--text-gray);
             max-width: 600px;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
             margin-bottom: 35px;
         }
 
         .btn-gold {
             background: var(--gold-gradient);
-            padding: 16px 40px;
+            padding: 14px 30px;
             border-radius: 50px;
             color: #000;
             text-decoration: none;
@@ -128,73 +128,46 @@
             transition: 0.4s;
             border: none;
             cursor: pointer;
-        }
-
-        .btn-gold:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            font-size: 0.9rem;
         }
 
         /* Services Section */
         .services {
-            padding: 100px 10%;
+            padding: 80px 5%;
             text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .card {
             background: var(--card-bg);
-            padding: 50px 30px;
-            border-radius: 24px;
+            padding: 40px 25px;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.4s;
-            text-align: left;
         }
 
-        .card:hover {
-            border-color: #d4af37;
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-10px);
-        }
-
-        .card i {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card h3 {
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-
-        .card p {
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-
-        footer {
-            padding: 50px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-gray);
-        }
-
+        /* التعديلات الخاصة بالموبايل (Responsive) */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.5rem; }
+            nav {
+                padding: 10px 5%;
+            }
+            .nav-links {
+                display: none; /* ممكن لاحقاً تعمل منيو بتفتح وتقفل */
+            }
+            .hero {
+                padding-top: 120px;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -209,9 +182,7 @@
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="index2.html">About</a>
-
-            <!-- التعديل هنا: زر Get Started يوجه لصفحة start.html -->
-            <a href="start.html" class="btn-gold" style="padding: 10px 20px;">Get Started</a>
+            <a href="start.html" class="btn-gold" style="padding: 8px 15px;">Get Started</a>
         </div>
     </nav>
 
@@ -226,20 +197,20 @@
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2 class="section-title" data-aos="fade-down">What We Do ?</h2>
+        <h2 class="section-title" data-aos="fade-down" style="margin-bottom: 40px;">What We Do ?</h2>
         <div class="grid">
             <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-laptop-code"></i>
+                <i class="fas fa-laptop-code" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
                 <h3>Web Solutions</h3>
                 <p>Developing high-performance, responsive websites using the latest technologies.</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-mobile-screen-button"></i>
+                <i class="fas fa-mobile-screen-button" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
                 <h3>App Development</h3>
                 <p>Custom mobile applications built for seamless user experiences on iOS and Android.</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-microchip"></i>
+                <i class="fas fa-microchip" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
                 <h3>Cloud Systems</h3>
                 <p>Secure and scalable cloud infrastructure to streamline your business operations.</p>
             </div>
@@ -256,10 +227,9 @@
         AOS.init({
             duration: 1000,
             once: true,
-            offset: 100
+            offset: 50
         });
     </script>
 
 </body>
 </html>
-
