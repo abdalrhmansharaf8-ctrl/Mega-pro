@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders Dashboard | Mega Pro</title>
+    <style>
+        body { background: #0a0a0a; color: #fff; font-family: sans-serif; padding: 50px; }
+        h2 { color: #d4af37; text-align: center; }
+        .order-card { background: #141414; border: 1px solid #d4af37; padding: 20px; margin-bottom: 15px; border-radius: 10px; }
+        .date { color: #555; font-size: 0.8rem; }
+        .service-tag { color: #d4af37; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>Project Requests Storage</h2>
+    <div id="ordersList"></div>
+
+    <script>
+        // سحب الطلبات من الذاكرة وعرضها
+        let orders = JSON.parse(localStorage.getItem('mega_orders')) || [];
+        let list = document.getElementById('ordersList');
+
+        if(orders.length === 0) {
+            list.innerHTML = "<p style='text-align:center'>No orders yet.</p>";
+        } else {
+            orders.reverse().forEach(order => {
+                list.innerHTML += `
+                    <div class="order-card">
+                        <div class="date">${order.date}</div>
+                        <h3>${order.name}</h3>
+                        <p class="service-tag">Service: ${order.service}</p>
+                        <p>${order.message}</p>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
