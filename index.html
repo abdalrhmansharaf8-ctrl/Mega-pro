@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Pro | Futuristic UI</title>
+    <title>Mega Pro | Dev Layout</title>
     
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
@@ -15,146 +15,133 @@
             --gold: #d4af37;
             --gold-gradient: linear-gradient(45deg, #d4af37, #f1d37e);
             --bg-dark: #050505;
-            --glass: rgba(255, 255, 255, 0.03);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-dark);
             color: #fff;
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* Hero Container */
-        .hero {
-            height: 100vh;
-            width: 100%;
-            position: relative; /* لجعل العناصر تتحرك بحرية داخلها */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at center, #111 0%, #050505 100%);
             overflow: hidden;
         }
 
-        /* Floating Animation */
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
+        .hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at center, #111 0%, #050505 100%);
         }
 
         /* Center Content */
-        .hero-main {
-            text-align: center;
-            z-index: 10;
-        }
-
-        .hero-main h1 {
-            font-size: clamp(3rem, 12vw, 6rem);
+        .hero-header { text-align: center; margin-bottom: 40px; z-index: 10; }
+        
+        .hero-header h1 {
+            font-size: clamp(3rem, 10vw, 5rem);
             font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 0.9;
-            margin-bottom: 20px;
+            line-height: 1;
         }
 
-        .hero-main h1 span {
+        .hero-header h1 span {
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Fixed Artistic Buttons (The "Game UI" Style) */
-        .fixed-btn {
-            position: absolute;
-            padding: 15px 25px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            background: var(--glass);
+        /* الأزرار اللي تحت بعض */
+        .button-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 300px;
+            z-index: 10;
+        }
+
+        .btn-stack-item {
+            padding: 16px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
             backdrop-filter: blur(10px);
             border-radius: 12px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
             transition: 0.4s;
-            animation: float 4s ease-in-out infinite;
         }
 
-        .fixed-btn:hover {
+        /* تمييز زرار البداية */
+        .btn-main {
+            background: var(--gold-gradient);
+            color: #000;
+            border: none;
+        }
+
+        .btn-stack-item:hover {
+            transform: scale(1.05);
             border-color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
-        /* أماكن الأزرار الموزعة فنيًا */
-        .btn-1 { top: 15%; left: 10%; animation-delay: 0s; }
-        .btn-2 { top: 20%; right: 12%; animation-delay: 1s; }
-        .btn-3 { bottom: 15%; left: 15%; animation-delay: 2s; border: none; background: var(--gold-gradient); color: #000; }
-        .btn-4 { bottom: 20%; right: 8%; animation-delay: 1.5s; }
+        /* عناصر زينة (Artistic Corners) */
+        .corner-tag {
+            position: absolute;
+            font-size: 0.7rem;
+            color: var(--gold);
+            opacity: 0.5;
+            letter-spacing: 3px;
+        }
+        .top-l { top: 40px; left: 40px; }
+        .bottom-r { bottom: 40px; right: 40px; }
 
-        /* العناصر الجمالية ورا الكلام */
-        .glow-orb {
+        /* Glow Effect */
+        .glow {
             position: absolute;
             width: 400px;
             height: 400px;
             background: var(--gold);
-            filter: blur(180px);
+            filter: blur(150px);
             opacity: 0.05;
-            z-index: 1;
         }
-
-        /* Lines decoration */
-        .ui-line {
-            position: absolute;
-            background: rgba(212, 175, 55, 0.1);
-        }
-        .line-v { width: 1px; height: 100%; top: 0; left: 50%; }
-        .line-h { width: 100%; height: 1px; top: 50%; left: 0; }
-
-        /* Start Button */
-        .start-trigger {
-            margin-top: 30px;
-            display: inline-block;
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1.2rem;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 5px;
-        }
-
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <div class="glow-orb"></div>
-        <div class="ui-line line-v"></div>
-        <div class="ui-line line-h"></div>
+        <div class="glow"></div>
+        
+        <div class="corner-tag top-l">MEGA_PRO // SYSTEM_V1</div>
+        <div class="corner-tag bottom-r">CORE_STATION_2026</div>
 
-        <!-- الأزرار الموزعة (Game Style) -->
-        <a href="#" class="fixed-btn btn-1" data-aos="fade-right">01. Service</a>
-        <a href="#" class="fixed-btn btn-2" data-aos="fade-left">02. Portfolio</a>
-        <a href="#" class="fixed-btn btn-3" data-aos="fade-up">03. Start Now</a>
-        <a href="#" class="fixed-btn btn-4" data-aos="fade-up-left">04. Contact</a>
+        <div class="hero-header">
+            <h1 data-aos="fade-down">MEGA<br><span>PRO</span></h1>
+        </div>
 
-        <div class="hero-main">
-            <h1 data-aos="zoom-in">MEGA<br><span>PRO</span></h1>
-            <p style="color: #666; letter-spacing: 5px;">INNOVATION ARCHITECTS</p>
-            <a href="#services" class="start-trigger">Explore Lab</a>
+        <!-- الأزرار المطلوبة تحت بعض -->
+        <div class="button-stack">
+            <a href="#services" class="btn-stack-item" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-layer-group"></i> &nbsp; Our Services
+            </a>
+            <a href="about.html" class="btn-stack-item" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-user-astronaut"></i> &nbsp; About Us
+            </a>
+            <a href="start.html" class="btn-stack-item btn-main" data-aos="fade-up" data-aos-delay="300">
+                Start Your Project
+            </a>
         </div>
     </section>
 
     <script src="https://unpkg.com"></script>
     <script>
-        AOS.init({ duration: 1200, once: true });
+        AOS.init({ duration: 1000, once: true });
     </script>
 </body>
 </html>
