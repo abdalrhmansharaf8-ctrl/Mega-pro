@@ -26,12 +26,10 @@
 
         html, body {
             width: 100%;
-           
             background-color: var(--bg-dark);
             color: #fff;
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            flex-wrap:wrap;
         }
 
         /* Navigation */
@@ -56,18 +54,23 @@
         }
 
         .logo-box img {
-            height: clamp(30px, 5vw, 40px);
+            height: clamp(25px, 4vw, 40px);
             width: auto;
         }
 
         .logo-text {
-            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-size: clamp(1rem, 3.5vw, 1.5rem);
             font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
             letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
         }
 
         .nav-links a {
@@ -77,7 +80,7 @@
             font-weight: 500;
             font-size: 0.85rem;
             transition: 0.3s;
-            flex-wrap:wrap;
+            white-space: nowrap; /* يمنع نزول النص لسطر جديد */
         }
 
         .nav-links a:hover { color: #d4af37; }
@@ -90,7 +93,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 100px 5% 50px;
+            padding: 120px 5% 50px;
             background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
 
@@ -125,6 +128,8 @@
             display: inline-block;
             transition: 0.4s;
             font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-gold:hover {
@@ -185,10 +190,37 @@
             font-size: 0.8rem;
         }
 
-        /* Mobile Adjustments */
+        /* Mobile Adjustments - التعديل هنا لضمان عدم الاختفاء */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding-top: 120px; }
+            nav {
+                padding: 10px 3%; /* تقليل الحواف لتوفير مساحة */
+            }
+
+            .nav-links {
+                display: flex; /* إجبار الروابط على البقاء ظاهرة */
+            }
+
+            .nav-links a {
+                margin-left: 10px; /* تقليل المسافة بين الروابط */
+                font-size: 0.75rem; /* تصغير الخط ليتناسب مع العرض */
+            }
+
+            .nav-links .btn-gold {
+                padding: 6px 12px !important; /* تصغير الزر الذهبي */
+                font-size: 0.7rem;
+                margin-left: 10px;
+            }
+            
+            .hero { padding-top: 100px; }
+        }
+
+        /* إعداد إضافي للشاشات الصغيرة جداً (أقل من 400px) */
+        @media (max-width: 400px) {
+            .nav-links a:not(.btn-gold) {
+                margin-left: 6px;
+                font-size: 0.65rem;
+            }
+            .logo-text { font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -202,7 +234,7 @@
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="index2.html">About</a>
-            <a href="start.html" class="btn-gold" style="padding: 8px 18px; margin-left: 15px;">Get Started</a>
+            <a href="start.html" class="btn-gold">Get Started</a>
         </div>
     </nav>
 
