@@ -6,8 +6,8 @@
     <title>About Mega Pro | Our Team</title>
     
     <!-- Fonts & Icons -->
-    <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
+    <link href="https://googleapis.com" rel="stylesheet">
     <link href="https://unpkg.com" rel="stylesheet">
 
     <style>
@@ -17,17 +17,22 @@
             --card-bg: rgba(255, 255, 255, 0.05);
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background-color: var(--bg-dark);
             color: #fff;
             font-family: 'Inter', sans-serif;
-            margin: 0;
             overflow-x: hidden;
         }
 
-        /* Navbar (Same as Home) */
+        /* Navbar */
         nav {
-            padding: 15px 8%;
+            padding: 15px 5%; /* تقليل الـ padding للموبايل */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -40,21 +45,22 @@
         }
 
         .logo-text {
-            font-size: 1.6rem;
+            font-size: clamp(1.2rem, 5vw, 1.6rem); /* خط مرن */
             font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-decoration: none;
         }
 
         /* About Header */
         .about-header {
-            padding: 100px 10% 50px;
+            padding: 80px 5% 40px; /* مسافات مرنة */
             text-align: center;
         }
 
         .about-header h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 8vw, 3.5rem); /* خط يصغر في الموبايل */
             margin-bottom: 20px;
         }
 
@@ -64,9 +70,16 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .about-header p {
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         /* Team Section */
         .team-section {
-            padding: 50px 10% 100px;
+            padding: 30px 5% 80px;
             display: flex;
             justify-content: center;
         }
@@ -74,24 +87,23 @@
         .team-card {
             background: var(--card-bg);
             border-radius: 30px;
-            padding: 40px;
+            padding: clamp(25px, 5vw, 40px); /* Padding مرن داخل الكارت */
             border: 1px solid rgba(212, 175, 55, 0.2);
             text-align: center;
+            width: 100%;
             max-width: 400px;
             transition: 0.5s;
-            position: relative;
-            overflow: hidden;
         }
 
         .team-card:hover {
             border-color: #d4af37;
-            transform: translateY(-15px);
+            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: clamp(140px, 30vw, 180px); /* حجم الصورة يتغير مع الشاشة */
+            height: clamp(140px, 30vw, 180px);
             border-radius: 50%;
             border: 4px solid #d4af37;
             margin-bottom: 25px;
@@ -100,13 +112,14 @@
         }
 
         .team-card h2 {
-            font-size: 1.8rem;
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
             margin-bottom: 10px;
         }
 
         .team-card .role {
             color: #d4af37;
             font-weight: 600;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
@@ -122,19 +135,14 @@
             text-align: left;
         }
 
-        .cert-box i {
-            color: #d4af37;
-            margin-right: 10px;
-        }
-
         .social-links {
             margin-top: 25px;
         }
 
         .social-links a {
             color: #fff;
-            margin: 0 10px;
-            font-size: 1.2rem;
+            margin: 0 12px;
+            font-size: 1.3rem;
             transition: 0.3s;
         }
 
@@ -144,16 +152,22 @@
             text-align: center;
             padding: 40px;
             opacity: 0.6;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+        }
+
+        /* تعديلات الموبايل الإضافية */
+        @media (max-width: 480px) {
+            .about-header { padding-top: 60px; }
+            .team-card { border-radius: 20px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-text">MEGA PRO</div>
+        <a href="index.html" class="logo-text">MEGA PRO</a>
         <div class="nav-links">
-            <a href="index.html" style="color: #fff; text-decoration: none;">Home</a>
+            <a href="index.html" style="color: #fff; text-decoration: none; font-size: 0.9rem;">Home</a>
         </div>
     </nav>
 
@@ -163,20 +177,16 @@
     </header>
 
     <section class="team-section">
-        <!-- بطاقتك الشخصية -->
         <div class="team-card" data-aos="zoom-in">
-            <!-- ضع صورتك هنا -->
-            <img src="profil.png" alt="Founder Name" class="profile-img">
-
-            
+            <img src="profil.png" alt="Abdulrhman" class="profile-img">
             <h2>Abdulrhman AL-houssiny</h2>
             <span class="role">Founder & Lead Developer</span>
             
-            <p style="color: #a0a0a0; font-size: 0.9rem;">Expert in building scalable digital products and driving technological innovation.</p>
+            <p style="color: #a0a0a0; font-size: 0.9rem; line-height: 1.6;">Expert in building scalable digital products and driving technological innovation.</p>
             
             <div class="cert-box">
-                <p><i class="fas fa-certificate"></i> <strong>Certification:</strong></p>
-                <p style="font-size: 0.85rem; margin-top: 5px;">[I am a high school student - Full Stack Web Development]</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-certificate"></i> <strong>Certification:</strong></p>
+                <p style="font-size: 0.8rem; margin-top: 5px; color: #ccc;">High School Student & Full Stack Web Developer</p>
             </div>
 
             <div class="social-links">
@@ -188,12 +198,12 @@
     </section>
 
     <footer>
-        &copy;  Mega Pro 2026
+        &copy; Mega Pro 2026
     </footer>
 
     <script src="https://unpkg.com"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000, once: true, offset: 50 });
     </script>
 </body>
 </html>
