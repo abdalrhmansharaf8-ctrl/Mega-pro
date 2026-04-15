@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Pro | Fixed Layout</title>
     <style>
+        /* إعدادات الصفحة الأساسية */
         body {
             margin: 0;
+            padding: 0;
             background-color: #0a0a0a;
             color: white;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 200vh; /* عامل طول زيادة عشان تتأكد إن الأزرار ثابتة مكانها */
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+        }
+
+        /* الكلام اللي في النص */
+        .content {
+            margin-top: 15vh;
             text-align: center;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3.5rem);
             margin-bottom: 10px;
+            line-height: 1.2;
         }
 
         h1 span {
@@ -29,35 +37,54 @@
         p {
             color: #a0a0a0;
             max-width: 500px;
-            margin-bottom: 30px;
+            margin: 0 auto;
+            font-size: 1.1rem;
         }
 
-        /* الأزرار تحت بعض في نفس المكان */
-        .btn-group {
+        /* الجزء اللي يهمك: تثبيت الأزرار في مكان واحد */
+        .fixed-btn-group {
+            position: fixed; /* السر هنا: بيفضل مكانه مهما حصل */
+            top: 65%;        /* مكانه من فوق (غير النسبة دي لو عاوزه يطلع أو ينزل) */
+            left: 50%;       /* في النص بالظبط عرضاً */
+            transform: translate(-50%, -50%); /* تظبيط السنتر */
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;      /* المسافة بين الأزرار */
+            z-index: 9999;  /* فوق أي حاجة تانية */
         }
 
         .btn {
             background-color: #f1d37e;
             color: black;
-            padding: 12px 35px;
+            padding: 14px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            width: 200px; /* عشان يبقوا مقاس واحد */
+            font-size: 0.95rem;
+            width: 220px;   /* عرض ثابت للأزرار */
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
     </style>
 </head>
 <body>
 
-    <h1>Empowering Brands <br> Through <span>Software</span></h1>
-    <p>We specialize in delivering high-end digital solutions that drive growth and innovation.</p>
+    <!-- الكلام الرئيسي -->
+    <div class="content">
+        <h1>Empowering Brands <br> Through <span>Software</span></h1>
+        <p>We specialize in delivering high-end digital solutions that drive growth and innovation.</p>
+    </div>
 
-    <div class="btn-group">
-        <a href="#" class="btn">About</a>
-        <a href="#" class="btn">Services</a>
+    <!-- الأزرار المتثبتة في مكان واحد -->
+    <div class="fixed-btn-group">
+        <a href="#" class="btn">About Us</a>
+        <a href="#" class="btn">Our Services</a>
         <a href="#" class="btn">Start Your Project</a>
     </div>
 
