@@ -2,17 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mega Pro | Innovation in Software</title>
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo.png">
-
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <link href="https://googleapis.com" rel="stylesheet">
-    
-    <!-- AOS Library for Scroll Animations -->
     <link href="https://unpkg.com" rel="stylesheet">
 
     <style>
@@ -29,21 +24,22 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            overflow-x: hidden; /* يمنع السكرول يمين وشمال */
             background-color: var(--bg-dark);
             color: #fff;
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
         /* Navigation */
         nav {
-            padding: 15px 5%; /* تقليل الـ padding عشان الموبايل */
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(15px);
             position: fixed;
             width: 100%;
@@ -55,36 +51,34 @@
         .logo-box {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .logo-box img {
-            height: 35px; /* تصغير اللوجو شوية للموبايل */
+            height: clamp(30px, 5vw, 40px);
             width: auto;
         }
 
         .logo-text {
-            font-size: 1.3rem; /* تصغير النص شوية */
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
             font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
             text-decoration: none;
+            letter-spacing: 1px;
         }
 
         .nav-links a {
             color: #fff;
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 15px;
             font-weight: 500;
-            transition: 0.3s;
             font-size: 0.85rem;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: #d4af37;
-        }
+        .nav-links a:hover { color: #d4af37; }
 
         /* Hero Section */
         .hero {
@@ -94,14 +88,15 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 100px 5% 50px; /* تعديل المسافات */
+            padding: 100px 5% 50px;
             background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 8vw, 4.5rem); /* تعديل الحجم ليكون مرن أكتر */
+            font-size: clamp(1.8rem, 8vw, 4rem);
             line-height: 1.2;
             margin-bottom: 20px;
+            width: 100%;
         }
 
         .hero span {
@@ -115,6 +110,7 @@
             max-width: 600px;
             font-size: clamp(0.9rem, 3vw, 1.1rem);
             margin-bottom: 35px;
+            line-height: 1.6;
         }
 
         .btn-gold {
@@ -126,21 +122,33 @@
             font-weight: 700;
             display: inline-block;
             transition: 0.4s;
-            border: none;
-            cursor: pointer;
             font-size: 0.9rem;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
 
         /* Services Section */
         .services {
             padding: 80px 5%;
             text-align: center;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 40px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .card {
@@ -149,31 +157,41 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.4s;
+            text-align: left;
         }
 
-        /* التعديلات الخاصة بالموبايل (Responsive) */
+        .card:hover {
+            border-color: #d4af37;
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #d4af37;
+            display: block;
+        }
+
+        .card h3 { margin-bottom: 12px; font-size: 1.3rem; }
+        .card p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; }
+
+        footer {
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            nav {
-                padding: 10px 5%;
-            }
-            .nav-links {
-                display: none; /* ممكن لاحقاً تعمل منيو بتفتح وتقفل */
-            }
-            .hero {
-                padding-top: 120px;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .card {
-                padding: 30px 20px;
-            }
+            .nav-links { display: none; } /* بنخفي اللينكات في الموبايل عشان الزحمة */
+            .hero { padding-top: 120px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
     <nav>
         <div class="logo-box">
             <img src="image/شعار مميز بلون الذهب.png" alt="Logo"> 
@@ -182,35 +200,33 @@
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="index2.html">About</a>
-            <a href="start.html" class="btn-gold" style="padding: 8px 15px;">Get Started</a>
+            <a href="start.html" class="btn-gold" style="padding: 8px 18px; margin-left: 15px;">Get Started</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1 data-aos="fade-up">Empowering Brands <br> Through <span>Software</span></h1>
-        <p data-aos="fade-up" data-aos-delay="200">We specialize in delivering high-end digital solutions that drive growth and innovation for modern businesses.</p>
+        <p data-aos="fade-up" data-aos-delay="200">We specialize in delivering high-end digital solutions that drive growth and innovation.</p>
         <div data-aos="zoom-in" data-aos-delay="400">
-            <a href="#services" class="btn-gold">Explore Our Services</a>
+            <a href="start.html" class="btn-gold">Start Your Project</a>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services">
-        <h2 class="section-title" data-aos="fade-down" style="margin-bottom: 40px;">What We Do ?</h2>
+        <h2 class="section-title" data-aos="fade-down">What We Do ?</h2>
         <div class="grid">
             <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-laptop-code" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
+                <i class="fas fa-laptop-code"></i>
                 <h3>Web Solutions</h3>
                 <p>Developing high-performance, responsive websites using the latest technologies.</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-mobile-screen-button" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
+                <i class="fas fa-mobile-screen-button"></i>
                 <h3>App Development</h3>
-                <p>Custom mobile applications built for seamless user experiences on iOS and Android.</p>
+                <p>Custom mobile applications built for seamless user experiences on all devices.</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-microchip" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
+                <i class="fas fa-microchip"></i>
                 <h3>Cloud Systems</h3>
                 <p>Secure and scalable cloud infrastructure to streamline your business operations.</p>
             </div>
@@ -230,6 +246,5 @@
             offset: 50
         });
     </script>
-
 </body>
 </html>
