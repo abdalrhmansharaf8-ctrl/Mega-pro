@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Pro</title>
     <style>
         body {
             margin: 0;
@@ -20,7 +19,6 @@
 
         h1 {
             font-size: 3rem;
-            font-weight: bold;
             margin-bottom: 10px;
         }
 
@@ -32,32 +30,23 @@
             color: #a0a0a0;
             max-width: 500px;
             margin-bottom: 30px;
-            line-height: 1.5;
         }
 
-        /* حاوية الأزرار في نفس المكان */
-        .btn-container {
+        /* الأزرار تحت بعض في نفس المكان */
+        .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* المسافة بين الأزرار */
+            gap: 12px;
         }
 
         .btn {
             background-color: #f1d37e;
             color: black;
-            padding: 12px 30px;
+            padding: 12px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 0.9rem;
-            width: 200px; /* توحيد عرض الأزرار */
-        }
-
-        /* لو عاوز تخلي About و Services بلون مختلف شوية */
-        .btn-alt {
-            background-color: transparent;
-            border: 1px solid #f1d37e;
-            color: #f1d37e;
+            width: 200px; /* عشان يبقوا مقاس واحد */
         }
     </style>
 </head>
@@ -66,7 +55,7 @@
     <h1>Empowering Brands <br> Through <span>Software</span></h1>
     <p>We specialize in delivering high-end digital solutions that drive growth and innovation.</p>
 
-    <div class="btn-container">
+    <div class="btn-group">
         <a href="#" class="btn">About</a>
         <a href="#" class="btn">Services</a>
         <a href="#" class="btn">Start Your Project</a>
