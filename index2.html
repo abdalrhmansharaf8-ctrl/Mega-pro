@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>About Mega Pro | Our Team</title>
     
     <!-- Fonts & Icons -->
@@ -23,16 +23,17 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
             background-color: var(--bg-dark);
             color: #fff;
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
         }
 
         /* Navbar */
         nav {
-            padding: 15px 5%; /* تقليل الـ padding للموبايل */
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,7 +46,7 @@
         }
 
         .logo-text {
-            font-size: clamp(1.2rem, 5vw, 1.6rem); /* خط مرن */
+            font-size: clamp(1.2rem, 5vw, 1.6rem);
             font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
@@ -55,13 +56,13 @@
 
         /* About Header */
         .about-header {
-            padding: 80px 5% 40px; /* مسافات مرنة */
+            padding: 60px 5% 30px;
             text-align: center;
         }
 
         .about-header h1 {
-            font-size: clamp(2rem, 8vw, 3.5rem); /* خط يصغر في الموبايل */
-            margin-bottom: 20px;
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            margin-bottom: 15px;
         }
 
         .about-header span {
@@ -73,53 +74,49 @@
         .about-header p {
             font-size: clamp(0.9rem, 3vw, 1.1rem);
             color: #a0a0a0;
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
+            line-height: 1.5;
         }
 
         /* Team Section */
         .team-section {
-            padding: 30px 5% 80px;
+            padding: 20px 5% 80px;
             display: flex;
             justify-content: center;
+            width: 100%;
         }
 
         .team-card {
             background: var(--card-bg);
-            border-radius: 30px;
-            padding: clamp(25px, 5vw, 40px); /* Padding مرن داخل الكارت */
+            border-radius: 25px;
+            padding: clamp(20px, 6vw, 40px);
             border: 1px solid rgba(212, 175, 55, 0.2);
             text-align: center;
             width: 100%;
-            max-width: 400px;
+            max-width: 400px; /* الكارت مش هيكبر عن كده وه يصغر مع الشاشة */
             transition: 0.5s;
         }
 
-        .team-card:hover {
-            border-color: #d4af37;
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
-        }
-
         .profile-img {
-            width: clamp(140px, 30vw, 180px); /* حجم الصورة يتغير مع الشاشة */
-            height: clamp(140px, 30vw, 180px);
+            width: clamp(130px, 40vw, 180px);
+            height: clamp(130px, 40vw, 180px);
             border-radius: 50%;
             border: 4px solid #d4af37;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             object-fit: cover;
             padding: 5px;
         }
 
         .team-card h2 {
-            font-size: clamp(1.4rem, 5vw, 1.8rem);
-            margin-bottom: 10px;
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
+            margin-bottom: 8px;
         }
 
         .team-card .role {
             color: #d4af37;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
@@ -141,7 +138,7 @@
 
         .social-links a {
             color: #fff;
-            margin: 0 12px;
+            margin: 0 10px;
             font-size: 1.3rem;
             transition: 0.3s;
         }
@@ -150,15 +147,9 @@
 
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             opacity: 0.6;
             font-size: 0.8rem;
-        }
-
-        /* تعديلات الموبايل الإضافية */
-        @media (max-width: 480px) {
-            .about-header { padding-top: 60px; }
-            .team-card { border-radius: 20px; }
         }
     </style>
 </head>
@@ -173,20 +164,21 @@
 
     <header class="about-header">
         <h1 data-aos="fade-down">The Mind Behind <span>Mega Pro</span></h1>
-        <p data-aos="fade-up" data-aos-delay="200">Passionate about turning complex problems into elegant software solutions.</p>
+        <p data-aos="fade-up" data-aos-delay="200">Turning complex problems into elegant software solutions.</p>
     </header>
 
     <section class="team-section">
         <div class="team-card" data-aos="zoom-in">
+            <!-- تأكد إن صورة profil.png موجودة في نفس الفولدر أو غير المسار -->
             <img src="profil.png" alt="Abdulrhman" class="profile-img">
             <h2>Abdulrhman AL-houssiny</h2>
             <span class="role">Founder & Lead Developer</span>
             
-            <p style="color: #a0a0a0; font-size: 0.9rem; line-height: 1.6;">Expert in building scalable digital products and driving technological innovation.</p>
+            <p style="color: #a0a0a0; font-size: 0.9rem; line-height: 1.5;">Expert in building scalable digital products and driving technological innovation.</p>
             
             <div class="cert-box">
-                <p style="font-size: 0.9rem;"><i class="fas fa-certificate"></i> <strong>Certification:</strong></p>
-                <p style="font-size: 0.8rem; margin-top: 5px; color: #ccc;">High School Student & Full Stack Web Developer</p>
+                <p style="font-size: 0.9rem; font-weight: bold;"><i class="fas fa-certificate"></i> Certification:</p>
+                <p style="font-size: 0.8rem; margin-top: 5px; color: #ccc;">High School Student | Full Stack Web Developer</p>
             </div>
 
             <div class="social-links">
@@ -203,7 +195,7 @@
 
     <script src="https://unpkg.com"></script>
     <script>
-        AOS.init({ duration: 1000, once: true, offset: 50 });
+        AOS.init({ duration: 1000, once: true });
     </script>
 </body>
 </html>
