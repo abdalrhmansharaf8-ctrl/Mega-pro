@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Responsive Boxes</title>
+<title>Fixed Layout</title>
 
 <style>
 
@@ -19,10 +19,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: Arial;
 }
 
-/* الكارد الكبير */
+/* الكارد */
 .container {
     background: #ddd;
     padding: 20px;
@@ -31,43 +30,57 @@ body {
     max-width: 700px;
 }
 
-/* الجريد */
+/* الجريد الأساسي */
 .grid {
     display: grid;
     gap: 10px;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "a b c d"
+        "e f g h"
+        "e i j k";
 }
 
-/* الصف الأول */
-.top {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-}
-
-/* الصف التاني */
-.bottom {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-}
-
-/* شكل البوكس */
+/* البوكس */
 .box {
     background: linear-gradient(#ccc, #aaa);
     border-radius: 10px;
     height: 80px;
 }
 
-/* بوكس طويل */
-.big {
-    grid-row: span 2;
-    height: 170px;
-}
+/* توزيع العناصر */
+.a { grid-area: a; }
+.b { grid-area: b; }
+.c { grid-area: c; }
+.d { grid-area: d; }
 
-/* موبايل */
-@media(max-width:500px){
-    .box {
-        height: 70px;
+.e { grid-area: e; height: 170px; }
+
+.f { grid-area: f; }
+.g { grid-area: g; }
+.h { grid-area: h; }
+
+.i { grid-area: i; }
+.j { grid-area: j; }
+.k { grid-area: k; }
+
+/* 📱 موبايل */
+@media(max-width: 600px){
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "a b"
+            "c d"
+            "e e"
+            "f g"
+            "h i"
+            "j k";
     }
 
-    .big {
-        height: 150px;
+    .e {
+        height: 120px;
     }
 }
 
@@ -77,26 +90,22 @@ body {
 <body>
 
 <div class="container">
+    <div class="grid">
+        <div class="box a"></div>
+        <div class="box b"></div>
+        <div class="box c"></div>
+        <div class="box d"></div>
 
-    <!-- الصف الأول -->
-    <div class="grid top">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
+        <div class="box e"></div>
+
+        <div class="box f"></div>
+        <div class="box g"></div>
+        <div class="box h"></div>
+
+        <div class="box i"></div>
+        <div class="box j"></div>
+        <div class="box k"></div>
     </div>
-
-    <br>
-
-    <!-- الصف التاني -->
-    <div class="grid bottom">
-        <div class="box big"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
-    </div>
-
 </div>
 
 </body>
