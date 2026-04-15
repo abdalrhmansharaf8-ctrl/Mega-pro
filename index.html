@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Mega Pro | Innovation in Software</title>
     
     <!-- Fonts & Icons -->
@@ -26,7 +26,7 @@
 
         html, body {
             width: 100%;
-            overflow-x: hidden;
+            overflow-x: hidden; /* يمنع السكرول يمين وشمال */
             background-color: var(--bg-dark);
             color: #fff;
             font-family: 'Inter', sans-serif;
@@ -35,11 +35,11 @@
 
         /* Navigation */
         nav {
-            padding: 10px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(15px);
             position: fixed;
             width: 100%;
@@ -51,16 +51,16 @@
         .logo-box {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .logo-box img {
-            height: 35px; /* ثبت الطول عشان الموبايل */
+            height: clamp(30px, 5vw, 40px);
             width: auto;
         }
 
         .logo-text {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
             font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
@@ -69,17 +69,12 @@
             letter-spacing: 1px;
         }
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
         .nav-links a {
             color: #fff;
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 15px;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.3s;
         }
 
@@ -93,15 +88,15 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 5% 60px; /* زيادة Padding فوق عشان الـ Nav */
+            padding: 100px 5% 50px;
             background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 10vw, 4.5rem); /* كبرنا الحجم شوية */
-            line-height: 1.1;
-            margin-bottom: 25px;
-            font-weight: 800;
+            font-size: clamp(1.8rem, 8vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            width: 100%;
         }
 
         .hero span {
@@ -112,46 +107,45 @@
 
         .hero p {
             color: var(--text-gray);
-            max-width: 650px;
-            font-size: clamp(1rem, 3.5vw, 1.25rem);
-            margin-bottom: 40px;
+            max-width: 600px;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            margin-bottom: 35px;
             line-height: 1.6;
         }
 
         .btn-gold {
             background: var(--gold-gradient);
-            padding: 16px 35px;
+            padding: 14px 30px;
             border-radius: 50px;
             color: #000;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
             transition: 0.4s;
-            font-size: 1rem;
-            border: none;
+            font-size: 0.9rem;
         }
 
         .btn-gold:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
 
         /* Services Section */
         .services {
-            padding: 100px 7%;
+            padding: 80px 5%;
             text-align: center;
             width: 100%;
         }
 
         .section-title {
-            font-size: clamp(1.8rem, 6vw, 2.8rem);
-            margin-bottom: 50px;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 40px;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 20px;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -159,52 +153,40 @@
 
         .card {
             background: var(--card-bg);
-            padding: 50px 30px;
-            border-radius: 24px;
+            padding: 40px 25px;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.4s;
             text-align: left;
         }
 
         .card:hover {
             border-color: #d4af37;
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateY(-12px);
+            transform: translateY(-10px);
         }
 
         .card i {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
+            font-size: 2rem;
+            margin-bottom: 20px;
             color: #d4af37;
             display: block;
         }
 
-        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
-        .card p { color: var(--text-gray); font-size: 1rem; line-height: 1.6; }
+        .card h3 { margin-bottom: 12px; font-size: 1.3rem; }
+        .card p { color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; }
 
         footer {
-            padding: 50px 5%;
+            padding: 40px 5%;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
-        /* أهم جزء: Mobile Adjustments */
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            nav { padding: 12px 20px; }
-            
-            /* إخفاء اللينكات العادية وإظهار زرار الـ Get Started فقط لتوفير مساحة */
-            .nav-links a:not(.btn-gold) { display: none; }
-            
-            .btn-gold { padding: 12px 24px; font-size: 0.9rem; }
-            
-            .hero { padding-top: 140px; }
-            .hero h1 { margin-bottom: 15px; }
-            .hero p { font-size: 1.05rem; }
-            
-            .grid { grid-template-columns: 1fr; } /* الكروت تحت بعض في الموبايل */
-            .card { padding: 35px 25px; }
+            .nav-links { display: none; } /* بنخفي اللينكات في الموبايل عشان الزحمة */
+            .hero { padding-top: 120px; }
         }
     </style>
 </head>
@@ -212,14 +194,13 @@
 
     <nav>
         <div class="logo-box">
-            <!-- تأكد من صحة مسار الصورة -->
             <img src="image/شعار مميز بلون الذهب.png" alt="Logo"> 
             <a href="index.html" class="logo-text">MEGA PRO</a>
         </div>
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="index2.html">About</a>
-            <a href="start.html" class="btn-gold">Get Started</a>
+            <a href="start.html" class="btn-gold" style="padding: 8px 18px; margin-left: 15px;">Get Started</a>
         </div>
     </nav>
 
@@ -232,7 +213,7 @@
     </section>
 
     <section id="services" class="services">
-        <h2 class="section-title" data-aos="fade-down">What We Do?</h2>
+        <h2 class="section-title" data-aos="fade-down">What We Do ?</h2>
         <div class="grid">
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-laptop-code"></i>
